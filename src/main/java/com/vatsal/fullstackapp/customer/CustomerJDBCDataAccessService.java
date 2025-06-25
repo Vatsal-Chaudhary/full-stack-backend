@@ -30,7 +30,8 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
     @Override
     public Optional<Customer> getCustomerById(Integer id) {
         var sql = """
-                SELECT  id, name, email, age
+                SELECT  id, name,
+                 email, age
                 FROM customer
                 WHERE id = ?
                 """;
@@ -55,6 +56,17 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
                 WHERE email = ?
                 """;
         Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email);
+        return count != null && count > 0;
+    }
+
+    @Override
+    public boolean existsPersonWithId(Integer id) {
+        var sql = """
+                SELECT count(id)
+                FROM customer
+                WHERE id = ?
+                """;
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, id);
         return count != null && count > 0;
     }
 
