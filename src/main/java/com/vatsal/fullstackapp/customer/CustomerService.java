@@ -3,6 +3,7 @@ package com.vatsal.fullstackapp.customer;
 import com.vatsal.fullstackapp.exception.DuplicateResourceException;
 import com.vatsal.fullstackapp.exception.RequestValidationException;
 import com.vatsal.fullstackapp.exception.ResourceNotFoundException;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class CustomerService {
 
     private final CustomerDao customerDao;
 
-    public CustomerService(CustomerDao customerDao) {
+    public CustomerService(@Qualifier("jdbc") CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
 
@@ -90,6 +91,6 @@ public class CustomerService {
             throw new RequestValidationException("No changes to update");
         }
 
-        customerDao.updateCustomerById(id, customer);
+        customerDao.updateCustomerById(customer);
     }
 }

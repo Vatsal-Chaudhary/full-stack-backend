@@ -9,5 +9,5 @@ public interface CustomerDao {
     void insertCustomer(Customer customer);
     boolean existsPersonWithEmail(String email);
     void deleteCustomerById(Integer id);
-    void updateCustomerById(Integer id, Customer customer);
+    void updateCustomerById(Customer customer);
 }
