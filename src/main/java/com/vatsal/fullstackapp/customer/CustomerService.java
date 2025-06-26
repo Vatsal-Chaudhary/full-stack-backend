@@ -24,7 +24,7 @@ public class CustomerService {
     public Customer getCustomer(Integer id) {
         return customerDao.getCustomerById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        String.format("Customer with id %d not found", id)
+                        "Customer with id %d not found".formatted(id)
                 ));
     }
 
@@ -34,7 +34,7 @@ public class CustomerService {
         }
         if (customerDao.existsPersonWithEmail(customerRegistrationRequest.email())) {
             throw new DuplicateResourceException(
-                    "Email %s is already taken"
+                    "Email is already taken"
             );
         }
 
@@ -47,7 +47,7 @@ public class CustomerService {
     }
 
     public void deleteCustomer(Integer id) {
-        if (customerDao.getCustomerById(id).isEmpty()) {
+        if (!customerDao.existsPersonWithId(id)) {
             throw new ResourceNotFoundException(
                     String.format("Customer with id %d not found", id)
             );
@@ -55,7 +55,7 @@ public class CustomerService {
         customerDao.deleteCustomerById(id);
     }
 
-    public void updateCustomer(Integer id, CustomerRegistrationRequest customerRegistrationRequest) {
+    public void updateCustomer(Integer id, CustomerUpdateRequest customerRegistrationRequest) {
         if (customerDao.getCustomerById(id).isEmpty()) {
             throw new ResourceNotFoundException(
                     String.format("Customer with id %d not found", id)
@@ -67,7 +67,7 @@ public class CustomerService {
         if (customerRegistrationRequest.email() != null && !customerRegistrationRequest.email().isBlank()) {
             if (!customer.getEmail().equals(customerRegistrationRequest.email())) {
                 if (customerDao.existsPersonWithEmail(customerRegistrationRequest.email())) {
-                    throw new DuplicateResourceException("Email %s is already taken");
+                    throw new DuplicateResourceException("Email is already taken");
                 }
                 customer.setEmail(customerRegistrationRequest.email());
                 changes = true;
