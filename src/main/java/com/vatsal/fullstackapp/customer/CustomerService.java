@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -91,6 +90,6 @@ public class CustomerService {
             throw new RequestValidationException("No changes to update");
         }
 
-        customerDao.updateCustomerById(customer);
+        customerDao.updateCustomer(customer);
     }
 }
