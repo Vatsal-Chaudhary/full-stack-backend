@@ -206,7 +206,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestContainers {
         update.setId(id);
         update.setName(newName);
 
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
 
         var actual = underTest.getCustomerById(id);
 
@@ -242,7 +242,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestContainers {
         update.setId(id);
         update.setEmail(newEmail);
 
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
 
         var actual = underTest.getCustomerById(id);
 
@@ -278,7 +278,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestContainers {
         update.setId(id);
         update.setAge(newAge);
 
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
 
         var actual = underTest.getCustomerById(id);
 
@@ -318,7 +318,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestContainers {
         update.setEmail(newEmail);
         update.setAge(newAge);
 
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
 
         var actual = underTest.getCustomerById(id);
 
@@ -351,7 +351,7 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestContainers {
         Customer update = new Customer();
         update.setId(id);
 
-        underTest.updateCustomerById(update);
+        underTest.updateCustomer(update);
 
         var actual = underTest.getCustomerById(id);
 

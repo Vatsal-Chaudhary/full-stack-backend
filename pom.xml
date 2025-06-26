@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.vatsal</groupId>
-    <artifactId>full-stack-app</artifactId>
+    <artifactId>full-stack-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>full-stack-app</name>
     <description>full-stack-app</description>
