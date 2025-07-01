@@ -6,17 +6,30 @@ services:
         POSTGRES_USER: vatsal
         POSTGRES_PASSWORD: password
         PG_DATA: /data/postgres
+        PGDATA: /var/lib/postgresql/data
     volumes:
-      - db:/data/postgres
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
     networks:
       - db
     restart: unless-stopped
-
+  backend-api:
+    container_name: backend-api
+    image: vatsaldock/full-stack-backend
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/customer"
+    ports:
+      - 8088:8080
+    networks:
+      - db
+    depends_on:
+      - db
+    restart: unless-stopped
 networks:
   db:
     driver: bridge
 
 volumes:
-  db:
+  postgres_data:
+    name: postgres_data

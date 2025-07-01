@@ -20,7 +20,7 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CustomerIntegrationTest {
+public class CustomerIT {
 
     @Autowired
     private WebTestClient webTestClient;

@@ -2,9 +2,9 @@ spring:
   application:
     name: full-stack-app
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer
-    username: vatsal
-    password: password
+    url: jdbc:postgresql://postgres.railway.internal:5432/railway
+    username: postgres
+    password: ErhGcvNnxJVPNQoYNxcABLJJjXTKtjNn
   jpa:
     hibernate:
       ddl-auto: validate
