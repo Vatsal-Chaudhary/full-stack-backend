@@ -5,6 +5,8 @@ spring:
     url: jdbc:postgresql://postgres.railway.internal:5432/railway
     username: postgres
     password: ErhGcvNnxJVPNQoYNxcABLJJjXTKtjNn
+  flyway:
+    enabled: false
   jpa:
     hibernate:
       ddl-auto: validate
